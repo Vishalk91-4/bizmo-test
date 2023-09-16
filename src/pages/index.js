@@ -1,12 +1,13 @@
-import React from 'react'
-import Leftside from './components/Leftside'
-import Rightside from './components/Rightside'
-export default function index() {
+import React, { useState } from "react";
+import Leftside from "./components/Leftside";
+import Rightside from "./components/Rightside";
+export default function Index() {
+  const [leftNav, setLeftNav] = useState("");
+
   return (
     <div>
-      <Leftside/>
-      <Rightside/>
-      
+      <Leftside setLeftNav={setLeftNav} />
+      <Rightside leftNav={leftNav} />
     </div>
-  )
+  );
 }
