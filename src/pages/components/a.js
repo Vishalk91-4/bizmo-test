@@ -1,27 +1,45 @@
-import React from "react";
+import React, { useState } from 'react';
+import X from './x';
+import Y from './y';
+import Rightside from './Rightside';
 
-function A({ setLeftNav }) {
+function A() {
+  const [isClicked, setIsClicked] = useState(null);
+  let content = null;
+
+  if (isClicked === 'X') {
+    content = <X />;
+  } else if (isClicked === 'Y') {
+    content = <Y />;
+  }
+   
   return (
-    <nav class="mt-4 -mx-3 space-y-6 ">
-      <div class="space-y-3 ">
-        <button
-          class=" w-full hover:bg-gray-200 flex items-center px-3 py-2 text-gray-600 transform rounded-lg  hover:text-gray-800"
-          href="#"
-          onClick={() => setLeftNav("X")}
-        >
-          <span class="mx-2 text-sm font-medium">X</span>
-        </button>
+    <nav className="mt-4 -mx-3 space-y-6 ">
+    <div className="space-y-3 ">
 
         <button
-          class="w-full hover:bg-gray-200 flex items-center px-3 py-2 text-gray-600 transform rounded-lg  hover:text-gray-800"
-          href="#"
-          onClick={() => setLeftNav("Y")}
-        >
-          <span class="mx-2 text-sm font-medium">Y</span>
+          onClick={() => setIsClicked('X')}
+          className=" w-full hover:bg-gray-200 flex items-center px-3 py-2 text-gray-600 transform rounded-lg  hover:text-gray-800">
+        
+            <span className="mx-2 text-sm font-medium">X</span>
+
         </button>
-      </div>
-    </nav>
-  );
+
+        <button onClick={() => setIsClicked('Y')} className="w-full hover:bg-gray-200 flex items-center px-3 py-2 text-gray-600 transform rounded-lg  hover:text-gray-800" >
+
+            <span className="mx-2 text-sm font-medium">Y</span>
+        </button>
+   
+    </div>
+    <Rightside content={content} />
+
+ 
+</nav>
+
+
+
+
+  )
 }
 
-export default A;
+export default A
